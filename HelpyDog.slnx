@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="HelpyDog.ConsoleTimer/HelpyDog.ConsoleTimer.csproj" />
+  <Project Path="HelpyDog.Web/HelpyDog.Web.csproj" />
+</Solution>

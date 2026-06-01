@@ -1,0 +1,33 @@
+﻿@model HelpyDog.Web.Models.Pet
+@{
+    ViewData["Title"] = "Mój Zwierzak";
+    string mood = "mid"; 
+    
+    if (Model.HappinessLevel >= 70) { mood = "happy"; }
+    else if (Model.HappinessLevel <= 30) { mood = "sad"; }
+}
+
+<div class="container text-center mt-5">
+    <h1>Twój Wirtualny Pomocnik</h1>
+    <div class="card mx-auto shadow-sm" style="max-width: 400px; padding: 20px;">
+        <h3>@Model.Name</h3>
+        
+        <img src="~/images/@(Model.DogType)_dog_@(mood).png" 
+             alt="Mój piesek" 
+             style="width: 250px; height: 250px; object-fit: contain; image-rendering: pixelated; margin: 0 auto;" />
+
+        <div class="mt-4">
+            <h5>Poziom: <strong>@Model.Level</strong></h5>
+            <p>XP: @Model.ExperiencePoints / @(Model.Level * 100)</p>
+            <div class="progress mb-3">
+                <div class="progress-bar bg-success" style="width: @((Model.ExperiencePoints * 100) / (Model.Level * 100))%;"></div>
+            </div>
+
+            <p>Szczęście: @Model.HappinessLevel / 100</p>
+            <div class="progress">
+                <div class="progress-bar @(mood == "happy" ? "bg-info" : (mood == "sad" ? "bg-danger" : "bg-warning"))" 
+                     style="width: @Model.HappinessLevel%;"></div>
+            </div>
+        </div>
+    </div>
+</div>
