@@ -212,3 +212,4 @@ D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\refint\HelpyDog.Web.dll
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.pdb
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.genruntimeconfig.cache
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\ref\HelpyDog.Web.dll
+D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.sourcelink.json

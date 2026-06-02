@@ -1,0 +1,38 @@
+@model IEnumerable<HelpyDog.Web.Models.Pet>
+
+@{
+    ViewData["Title"] = "Ranking Uczestników";
+    int rank = 1;
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Ranking Zwierzaków</h2>
+        <a asp-action="Index" class="btn btn-secondary">Powrót do mojego pieska</a>
+    </div>
+
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Miejsce</th>
+                <th>Właściciel</th>
+                <th>Imię Zwierzaka</th>
+                <th>Poziom</th>
+                <th>Doświadczenie (XP)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pet in Model)
+            {
+                <tr>
+                    <td><strong>#@rank</strong></td>
+                    <td>@pet.User?.UserName</td>
+                    <td>@pet.Name</td>
+                    <td><span class="badge bg-success">@pet.Level</span></td>
+                    <td>@pet.ExperiencePoints</td>
+                </tr>
+                rank++;
+            }
+        </tbody>
+    </table>
+</div>
