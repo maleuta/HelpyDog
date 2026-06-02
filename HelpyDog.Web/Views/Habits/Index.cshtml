@@ -1,0 +1,31 @@
+@model IEnumerable<HelpyDog.Web.Models.Habit>
+@{ ViewData["Title"] = "Zarządzanie Aktywnościami"; }
+
+<div class="container mt-4">
+    <h2>Kategorie Aktywności (Nawyki)</h2>
+    <a asp-action="Create" class="btn btn-success mb-3">Dodaj nową aktywność</a>
+
+    <table class="table table-bordered bg-white shadow-sm">
+        <thead class="table-dark">
+            <tr>
+                <th>Nazwa</th>
+                <th>Mnożnik XP</th>
+                <th style="width: 100px;">Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>x @item.XpMultiplier</td>
+                    <td>
+                        <form asp-action="Delete" asp-route-id="@item.Id" method="post" onsubmit="return confirm('Na pewno chcesz usunąć tę aktywność?');">
+                            <button type="submit" class="btn btn-danger btn-sm w-100">Usuń</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

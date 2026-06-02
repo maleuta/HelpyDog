@@ -35,8 +35,11 @@ namespace HelpyDog.Web.Data
             });
 
             modelBuilder.Entity<Habit>().HasData(
-                new Habit { Id = 1, Title = "Nauka programowania", XpMultiplier = 1.5, IsGlobal = true }
-            );
+                new Habit { Id = 1, Title = "Nauka (Studying)", XpMultiplier = 1.0, IsGlobal = true },
+                new Habit { Id = 2, Title = "Praca (Working)", XpMultiplier = 2.0, IsGlobal = true },
+                new Habit { Id = 3, Title = "Spacer z psem", XpMultiplier = 0.5, IsGlobal = true },
+                new Habit { Id = 4, Title = "Głębokie skupienie (Deep Work)", XpMultiplier = 2.5, IsGlobal = true }
+);
         }
 
         private string HashPassword(string password)

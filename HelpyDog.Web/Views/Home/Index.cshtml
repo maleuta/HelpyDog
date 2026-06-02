@@ -35,11 +35,20 @@
     </div>
 
     <div class="card mx-auto shadow-sm" style="max-width: 400px; padding: 20px;">
-        <h4>Dodaj sesję nauki</h4>
+        <h4>Zaloguj Aktywność</h4>
         <form asp-action="LogSession" method="post" class="mt-3">
+            <div class="mb-3">
+                <select name="habitId" class="form-select" required>
+                    <option value="">Wybierz aktywność...</option>
+                    @foreach (var habit in ViewBag.Habits)
+                    {
+                        <option value="@habit.Id">@habit.Title (Mnożnik: x@(habit.XpMultiplier))</option>
+                    }
+                </select>
+            </div>
             <div class="input-group mb-3">
                 <input type="number" name="durationMinutes" class="form-control" placeholder="Ilość minut" required min="1">
-                <button class="btn btn-success" type="submit">Zapisz czas</button>
+                <button class="btn btn-success" type="submit">Zapisz</button>
             </div>
         </form>
     </div>

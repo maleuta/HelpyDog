@@ -1,0 +1,37 @@
+@model IEnumerable<HelpyDog.Web.Models.ActivityLog>
+@{ ViewData["Title"] = "Statystyki Tygodniowe"; }
+
+<div class="container mt-5">
+    <h2>Twoja praca z ostatnich 7 dni</h2>
+    
+    <div class="card shadow-sm mt-4 p-3">
+        @if (!Model.Any())
+        {
+            <div class="alert alert-warning">Twój piesek jest smutny. Nie logowałeś żadnej aktywności w tym tygodniu!</div>
+        }
+        else
+        {
+            <table class="table table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Data</th>
+                        <th>Kategoria</th>
+                        <th>Czas (minuty)</th>
+                        <th>Zdobyte XP</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var log in Model)
+                    {
+                        <tr>
+                            <td>@log.DateLogged.ToString("dd.MM.yyyy HH:mm")</td>
+                            <td>@log.Habit?.Title</td>
+                            <td>@log.DurationMinutes min.</td>
+                            <td><span class="badge bg-success">+@log.EarnedXp XP</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>

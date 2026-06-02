@@ -1,0 +1,16 @@
+@model IEnumerable<HelpyDog.Web.Models.User>
+@{ ViewData["Title"] = "Zarządzanie Użytkownikami"; }
+
+<h2>Lista Użytkowników Systemu</h2>
+<a asp-action="Create" class="btn btn-success mb-3">Dodaj Nowego Użytkownika</a>
+
+<table class="table table-bordered bg-white shadow-sm">
+    <thead class="table-dark">
+        <tr><th>ID (Token API)</th><th>Nazwa</th><th>Rola</th></tr>
+    </thead>
+    <tbody>
+        @foreach(var u in Model) {
+            <tr><td>@u.Id</td><td>@u.UserName</td><td>@u.Role</td></tr>
+        }
+    </tbody>
+</table>

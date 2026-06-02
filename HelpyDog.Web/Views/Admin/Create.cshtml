@@ -1,0 +1,21 @@
+@{ ViewData["Title"] = "Nowy użytkownik"; }
+<h2>Dodaj użytkownika</h2>
+@if(ViewBag.Error != null) { <div class="alert alert-danger">@ViewBag.Error</div> }
+<form asp-action="Create" method="post" class="card shadow-sm p-4 w-50">
+    <div class="mb-3">
+        <label>Nazwa użytkownika:</label>
+        <input type="text" name="username" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Hasło:</label>
+        <input type="password" name="password" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Rola:</label>
+        <select name="role" class="form-select">
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Utwórz</button>
+</form>

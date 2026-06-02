@@ -1,0 +1,22 @@
+@model HelpyDog.Web.Models.Habit
+@{ ViewData["Title"] = "Dodaj Aktywność"; }
+
+<div class="container mt-4">
+    <h2>Dodaj nową kategorię nauki/pracy</h2>
+    
+    <div class="card shadow-sm p-4 mt-3" style="max-width: 500px;">
+        <form asp-action="Create" method="post">
+            <div class="mb-3">
+                <label class="form-label">Nazwa (np. Czytanie, Deep Work):</label>
+                <input type="text" name="Title" class="form-control" required />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mnożnik Punktów (np. 1.0, 1.5, 2.0):</label>
+                <input type="number" step="0.1" name="XpMultiplier" class="form-control" required />
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Zapisz do bazy</button>
+            <a asp-action="Index" class="btn btn-secondary ms-2">Wróć</a>
+        </form>
+    </div>
+</div>

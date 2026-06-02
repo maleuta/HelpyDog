@@ -199,8 +199,6 @@ D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\wpedcxwgm6-{0}-2z
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\4vcjf0j0h2-{0}-muycvpuwrr-muycvpuwrr.gz
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\tvxjwceqk9-{0}-87fc7y1x7t-87fc7y1x7t.gz
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\vl7h5094v8-{0}-mlv21k5csn-mlv21k5csn.gz
-D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\mq02pjhpvx-{0}-k8gmnmth03-k8gmnmth03.gz
-D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\vunjpmtlpw-{0}-k8gmnmth03-k8gmnmth03.gz
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\staticwebassets.build.json
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\staticwebassets.development.json
@@ -213,3 +211,5 @@ D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.pdb
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.genruntimeconfig.cache
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\ref\HelpyDog.Web.dll
 D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\HelpyDog.Web.sourcelink.json
+D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\mq02pjhpvx-{0}-209m3e2xhf-209m3e2xhf.gz
+D:\studying\HelpyDog\HelpyDog.Web\obj\Debug\net10.0\compressed\vunjpmtlpw-{0}-209m3e2xhf-209m3e2xhf.gz
