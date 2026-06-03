@@ -26,3 +26,6 @@ System udostępnia zabezpieczone REST API do logowania aktywności z zewnątrz.
 3) Domyślne konto administratora: Login: admin | Hasło: admin123.
 
 4) Aby przetestować zewnętrzne API, należy w osobnej konsoli uruchomić projekt HelpyDog.ConsoleTimer poleceniem dotnet run i postępować zgodnie z instrukcjami na ekranie.
+
+### Baza danych
+<img width="684" height="1060" alt="image" src="https://github.com/user-attachments/assets/6f15a1e0-a7cc-4616-b58e-a4bc4f8e9a8f" />
