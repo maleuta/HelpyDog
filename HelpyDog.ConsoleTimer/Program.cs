@@ -23,13 +23,10 @@ namespace HelpyDog.ConsoleTimer
             Console.Write("Wybierz ID Aktywności (np. 1 dla pierwszej na liście): ");
             int habitId = int.Parse(Console.ReadLine() ?? "1");
 
-            // ==========================================
-            // NOWA LOGIKA: RĘCZNE WPISYWANIE CZASU
-            // ==========================================
+            // RĘCZNE WPISYWANIE CZASU
             Console.Write("Ile minut chcesz zalogować? Wpisz liczbę (np. 45) i wciśnij ENTER: ");
             string timeInput = Console.ReadLine();
             
-            // Zabezpieczenie przed wpisaniem głupot (np. liter lub pustego pola)
             if (!int.TryParse(timeInput, out int durationMinutes) || durationMinutes <= 0)
             {
                 Console.WriteLine("Błąd: Wpisano niepoprawny czas. Domyślnie ustawiam na 10 minut.");
