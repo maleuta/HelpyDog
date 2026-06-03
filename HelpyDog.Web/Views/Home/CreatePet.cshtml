@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Wybierz swojego pieska";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm mx-auto border-0" style="max-width: 800px; border-radius: 20px;">
+        <div class="card-body text-center p-5">
+            <h2 class="mb-4 fw-bold" style="color: #7f54cf;">Witaj w HelpyDog!</h2>
+            <p class="text-muted mb-5">Zanim zaczniesz naukę, wybierz i nazwij swojego wirtualnego pomocnika.</p>
+            
+            <form asp-action="CreatePet" method="post">
+                <div class="mb-5 text-start mx-auto" style="max-width: 400px;">
+                    <label class="form-label fw-bold">1. Jak go nazwiesz?</label>
+                    <input type="text" name="petName" class="form-control form-control-lg" placeholder="np. Azor" required />
+                </div>
+
+                <div class="mb-5">
+                    <label class="form-label fw-bold text-start d-block mb-3">2. Wybierz jego wygląd:</label>
+                    <div class="d-flex justify-content-center flex-wrap gap-3">
+                        @for(int i = 1; i <= 5; i++)
+                        {
+                            <div>
+                                <input type="radio" name="dogType" value="@i" id="dog@(i)" class="btn-check" required @(i == 1 ? "checked" : "") />
+                                <label class="btn btn-outline-secondary p-3 shadow-sm" for="dog@(i)" style="border-radius: 15px; cursor: pointer;">
+                                    <img src="~/images/@(i)_dog_happy.png" alt="Opcja @i" style="width: 100px; height: 100px; object-fit: contain; image-rendering: pixelated;" />
+                                </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg w-100 fw-bold" style="background-color: #7f54cf; border: none; border-radius: 10px; max-width: 400px;">
+                    Przygarnij pieska i zacznij!
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .btn-check:checked + .btn-outline-secondary {
+        background-color: #fdf6d6;
+        border-color: #7f54cf;
+        border-width: 3px;
+    }
+</style>

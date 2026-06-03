@@ -21,14 +21,13 @@ namespace HelpyDog.Web.Controllers
 
             var pet = _context.Pets.FirstOrDefault(p => p.UserId == userId);
             
+            // Zamiast losować, odsyłamy do wyboru
             if (pet == null)
             {
-                Random rnd = new Random();
-                pet = new Pet { Name = "Twój Piesek", UserId = userId, DogType = rnd.Next(1, 6) };
-                _context.Pets.Add(pet);
-                _context.SaveChanges();
+                return RedirectToAction("CreatePet");
             }
 
+            // Mechanizm spadku szczęścia
             var lastLog = _context.ActivityLogs
                                   .Where(a => a.PetId == pet.Id)
                                   .OrderByDescending(a => a.DateLogged)
@@ -50,7 +49,41 @@ namespace HelpyDog.Web.Controllers
             return View(pet);
         }
 
-        // PRZYWRÓCONA METODA: DODAWANIE CZASU
+        // EKRAN ADOPCJI (WYBÓR PIESKA)
+        [HttpGet]
+        public IActionResult CreatePet()
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login", "Account");
+
+            // Jeśli już ma pieska, nie pozwalamy mu wejść na tę stronę
+            if (_context.Pets.Any(p => p.UserId == userId)) return RedirectToAction("Index");
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreatePet(string petName, int dogType)
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+            if (string.IsNullOrEmpty(userId)) return RedirectToAction("Login", "Account");
+
+            if (!_context.Pets.Any(p => p.UserId == userId))
+            {
+                var newPet = new Pet
+                {
+                    Name = string.IsNullOrWhiteSpace(petName) ? "Mój Pomocnik" : petName,
+                    UserId = userId,
+                    DogType = dogType
+                };
+                _context.Pets.Add(newPet);
+                _context.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        
         [HttpPost]
         public IActionResult LogSession(int durationMinutes, int habitId)
         {
@@ -82,7 +115,6 @@ namespace HelpyDog.Web.Controllers
             return RedirectToAction("Index");
         }
 
-        // PRZYWRÓCONA METODA: RANKING (LEADERBOARD)
         public IActionResult Leaderboard()
         {
             var allPets = _context.Pets
@@ -94,7 +126,6 @@ namespace HelpyDog.Web.Controllers
             return View(allPets);
         }
 
-        // STATYSTYKI TYGODNIOWE
         public IActionResult WeeklyStats()
         {
             var userId = HttpContext.Session.GetString("UserId");
@@ -112,9 +143,6 @@ namespace HelpyDog.Web.Controllers
             return View(weeklyLogs);
         }
 
-        // ============================================
-        // NOWOŚĆ: SKLEP ZA XP
-        // ============================================
         public IActionResult Store()
         {
             var userId = HttpContext.Session.GetString("UserId");
@@ -142,14 +170,12 @@ namespace HelpyDog.Web.Controllers
                     pet.HappinessLevel += item.HappinessRestoreValue;
                     if (pet.HappinessLevel > 100) pet.HappinessLevel = 100; 
 
-                    // Wybieramy plik graficzny na podstawie nazwy przedmiotu
-                    string imageFile = "flower.jpg"; // domyślny plik
+                    string imageFile = "flower.jpg";
                     string nameLower = item.Name.ToLower();
                     
                     if (nameLower.Contains("rybk")) imageFile = "fish.png";
                     else if (nameLower.Contains("kot")) imageFile = "cat.png";
 
-                    // Zapisujemy nazwę obrazka do ekwipunku, oddzielając średnikiem (np. "fish.png;cat.png;")
                     pet.OwnedItems += imageFile + ";"; 
 
                     _context.SaveChanges();
