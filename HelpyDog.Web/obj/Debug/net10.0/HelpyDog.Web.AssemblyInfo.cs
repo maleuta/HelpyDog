@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HelpyDog.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8241d59553fa991ca8140e35a7c8f5202bdfeafe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+882f49a484f49454dc2370db7f9da10212fd1b41")]
 [assembly: System.Reflection.AssemblyProductAttribute("HelpyDog.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HelpyDog.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

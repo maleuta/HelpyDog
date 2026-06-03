@@ -1,0 +1,56 @@
+@model IEnumerable<HelpyDog.Web.Models.ShopItem>
+@{ ViewData["Title"] = "Sklep z nagrodami"; }
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Wirtualny Sklep</h2>
+        <span class="badge bg-warning text-dark fs-5 shadow-sm">Twoje punkty XP: @ViewBag.PetXp</span>
+    </div>
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success shadow-sm">@TempData["Message"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger shadow-sm">@TempData["Error"]</div>
+    }
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm text-center p-3 h-100 border-0" style="background-color: #ffffff;">
+                    
+                    <img src="~/images/@(item.Name.Replace(" ", "")).png" 
+                         alt="@item.Name" 
+                         class="mx-auto mt-3 mb-2" 
+                         style="width: 100px; height: 100px; object-fit: contain; image-rendering: pixelated;" 
+                         onerror="this.onerror=null; this.src='/images/flower.jpg';" />
+                    
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">@item.Name</h5>
+                        <p class="card-text text-muted small">@item.Description</p>
+                        
+                        <p class="mb-1 text-success fw-bold">+ @item.HappinessRestoreValue do Szczęścia</p>
+                        <p class="mb-3 text-danger fw-bold">Koszt: @item.PriceXp XP</p>
+                        
+                        <form asp-action="BuyItem" method="post">
+                            <input type="hidden" name="itemId" value="@item.Id" />
+                            @if (ViewBag.PetXp >= item.PriceXp)
+                            {
+                                <button type="submit" class="btn btn-primary w-100" style="background-color: #7f54cf; border-color: #7f54cf;">
+                                    Kup i użyj
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-secondary w-100" disabled>Brak punktów</button>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
