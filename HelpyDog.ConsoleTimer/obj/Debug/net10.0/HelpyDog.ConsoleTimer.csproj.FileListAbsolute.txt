@@ -1,0 +1,15 @@
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\bin\Debug\net10.0\HelpyDog.ConsoleTimer.exe
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\bin\Debug\net10.0\HelpyDog.ConsoleTimer.deps.json
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\bin\Debug\net10.0\HelpyDog.ConsoleTimer.runtimeconfig.json
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\bin\Debug\net10.0\HelpyDog.ConsoleTimer.dll
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\bin\Debug\net10.0\HelpyDog.ConsoleTimer.pdb
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.GeneratedMSBuildEditorConfig.editorconfig
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.AssemblyInfoInputs.cache
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.AssemblyInfo.cs
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.csproj.CoreCompileInputs.cache
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.sourcelink.json
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.dll
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\refint\HelpyDog.ConsoleTimer.dll
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.pdb
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\HelpyDog.ConsoleTimer.genruntimeconfig.cache
+D:\studying\HelpyDog\HelpyDog.ConsoleTimer\obj\Debug\net10.0\ref\HelpyDog.ConsoleTimer.dll

@@ -138,13 +138,22 @@ namespace HelpyDog.Web.Controllers
             {
                 if (pet.ExperiencePoints >= item.PriceXp)
                 {
-                    // Płacimy w XP, zyskujemy szczęście!
                     pet.ExperiencePoints -= item.PriceXp;
                     pet.HappinessLevel += item.HappinessRestoreValue;
-                    if (pet.HappinessLevel > 100) pet.HappinessLevel = 100; // Blokada na max 100%
+                    if (pet.HappinessLevel > 100) pet.HappinessLevel = 100; 
+
+                    // Wybieramy plik graficzny na podstawie nazwy przedmiotu
+                    string imageFile = "flower.jpg"; // domyślny plik
+                    string nameLower = item.Name.ToLower();
+                    
+                    if (nameLower.Contains("rybk")) imageFile = "fish.png";
+                    else if (nameLower.Contains("kot")) imageFile = "cat.png";
+
+                    // Zapisujemy nazwę obrazka do ekwipunku, oddzielając średnikiem (np. "fish.png;cat.png;")
+                    pet.OwnedItems += imageFile + ";"; 
 
                     _context.SaveChanges();
-                    TempData["Message"] = $"Kupiłeś: {item.Name}! Piesek jest szczęśliwszy.";
+                    TempData["Message"] = $"Kupiłeś: {item.Name}! Zobaczysz to teraz obok pieska.";
                 }
                 else
                 {

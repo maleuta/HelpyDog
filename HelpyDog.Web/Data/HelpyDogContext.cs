@@ -39,7 +39,14 @@ namespace HelpyDog.Web.Data
                 new Habit { Id = 2, Title = "Praca (Working)", XpMultiplier = 2.0, IsGlobal = true },
                 new Habit { Id = 3, Title = "Spacer z psem", XpMultiplier = 0.5, IsGlobal = true },
                 new Habit { Id = 4, Title = "Głębokie skupienie (Deep Work)", XpMultiplier = 2.5, IsGlobal = true }
-);
+            );
+
+            // 3. Przedmioty w sklepie (Twoje nowe grafiki!)
+            modelBuilder.Entity<ShopItem>().HasData(
+                new ShopItem { Id = 1, Name = "Rybka", Description = "Świeża, gumowa rybka", PriceXp = 50, HappinessRestoreValue = 20 },
+                new ShopItem { Id = 2, Name = "Kot", Description = "Najlepszy przyjaciel pieska", PriceXp = 100, HappinessRestoreValue = 40 },
+                new ShopItem { Id = 3, Name = "Kwiat", Description = "Piękny kwiat", PriceXp = 100, HappinessRestoreValue = 40 }
+            );
         }
 
         private string HashPassword(string password)

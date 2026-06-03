@@ -36,7 +36,10 @@ namespace HelpyDog.Web.Models
         public int ExperiencePoints { get; set; } = 0;
         public int HappinessLevel { get; set; } = 100;
         
-        public int DogType { get; set; } = 1; // Typ pieska (1-5)
+        public int DogType { get; set; } = 1; 
+
+        // NOWOŚĆ: Ta linijka będzie przechowywać Twoje kupione przedmioty!
+        public string OwnedItems { get; set; } = "";
 
         [Required]
         public string UserId { get; set; }

@@ -7,50 +7,55 @@
         <span class="badge bg-warning text-dark fs-5 shadow-sm">Twoje punkty XP: @ViewBag.PetXp</span>
     </div>
 
-    @if (TempData["Message"] != null)
-    {
-        <div class="alert alert-success shadow-sm">@TempData["Message"]</div>
-    }
-    @if (TempData["Error"] != null)
-    {
-        <div class="alert alert-danger shadow-sm">@TempData["Error"]</div>
-    }
+    @if (TempData["Message"] != null) { <div class="alert alert-success shadow-sm">@TempData["Message"]</div> }
+    @if (TempData["Error"] != null) { <div class="alert alert-danger shadow-sm">@TempData["Error"]</div> }
 
-    <div class="row">
-        @foreach (var item in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm text-center p-3 h-100 border-0" style="background-color: #ffffff;">
-                    
-                    <img src="~/images/@(item.Name.Replace(" ", "")).png" 
-                         alt="@item.Name" 
-                         class="mx-auto mt-3 mb-2" 
-                         style="width: 100px; height: 100px; object-fit: contain; image-rendering: pixelated;" 
-                         onerror="this.onerror=null; this.src='/images/flower.jpg';" />
-                    
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold">@item.Name</h5>
-                        <p class="card-text text-muted small">@item.Description</p>
+    @if (!Model.Any())
+    {
+        <div class="alert alert-warning">Sklep jest obecnie pusty. Sprawdź bazę danych!</div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                // Wybór obrazka do wyświetlenia w sklepie
+                string imageFile = "flower.jpg"; 
+                string nameLower = item.Name.ToLower();
+                if (nameLower.Contains("rybk")) imageFile = "fish.png";
+                else if (nameLower.Contains("kot")) imageFile = "cat.png";
+                
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm text-center p-3 h-100" style="border: 2px solid #eee; border-radius: 20px;">
                         
-                        <p class="mb-1 text-success fw-bold">+ @item.HappinessRestoreValue do Szczęścia</p>
-                        <p class="mb-3 text-danger fw-bold">Koszt: @item.PriceXp XP</p>
+                        <img src="~/images/@imageFile" alt="@item.Name" class="mx-auto mt-2 mb-2" style="width: 120px; height: 120px; object-fit: contain; image-rendering: pixelated;" />
                         
-                        <form asp-action="BuyItem" method="post">
-                            <input type="hidden" name="itemId" value="@item.Id" />
-                            @if (ViewBag.PetXp >= item.PriceXp)
-                            {
-                                <button type="submit" class="btn btn-primary w-100" style="background-color: #7f54cf; border-color: #7f54cf;">
-                                    Kup i użyj
-                                </button>
-                            }
-                            else
-                            {
-                                <button type="button" class="btn btn-secondary w-100" disabled>Brak punktów</button>
-                            }
-                        </form>
+                        <div class="card-body p-0">
+                            <h4 class="card-title fw-bold">@item.Name</h4>
+                            <p class="card-text text-muted">@item.Description</p>
+                            
+                            <div class="bg-light p-2 rounded mb-3">
+                                <span class="text-success fw-bold">Szczęście: +@item.HappinessRestoreValue</span><br/>
+                                <span class="text-danger fw-bold">Cena: @item.PriceXp XP</span>
+                            </div>
+                            
+                            <form asp-action="BuyItem" method="post">
+                                <input type="hidden" name="itemId" value="@item.Id" />
+                                @if (ViewBag.PetXp >= item.PriceXp)
+                                {
+                                    <button type="submit" class="btn btn-primary w-100 fw-bold" style="background-color: #7f54cf; border: none; border-radius: 10px;">
+                                        Kup i daj pieskowi
+                                    </button>
+                                }
+                                else
+                                {
+                                    <button type="button" class="btn btn-secondary w-100 fw-bold" style="border-radius: 10px;" disabled>Za mało XP</button>
+                                }
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
+            }
+        </div>
+    }
 </div>

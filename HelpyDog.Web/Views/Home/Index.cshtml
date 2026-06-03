@@ -13,12 +13,25 @@
         <a asp-action="Leaderboard" class="btn btn-outline-primary">Zobacz innych użytkowników</a>
     </div>
 
-    <div class="card mx-auto shadow-sm mb-4" style="max-width: 400px; padding: 20px;">
+    <div class="card mx-auto shadow-sm mb-4" style="max-width: 450px; padding: 20px;">
         <h3>@Model.Name</h3>
         
-        <img src="~/images/@(Model.DogType)_dog_@(mood).png" 
-             alt="Mój piesek" 
-             style="width: 250px; height: 250px; object-fit: contain; image-rendering: pixelated; margin: 0 auto;" />
+        <div class="d-flex justify-content-center align-items-end mt-3 mb-3">
+            
+            <img src="~/images/@(Model.DogType)_dog_@(mood).png" 
+                 alt="Mój piesek" 
+                 style="width: 200px; height: 200px; object-fit: contain; image-rendering: pixelated;" />
+            
+            @if (!string.IsNullOrEmpty(Model.OwnedItems))
+            {
+                <div class="ms-3 d-flex flex-wrap align-items-end" style="max-width: 120px;">
+                    @foreach (var imgFile in Model.OwnedItems.Split(';', StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        <img src="~/images/@imgFile" alt="Przedmiot" style="width: 50px; height: 50px; object-fit: contain; image-rendering: pixelated; margin: 2px;" />
+                    }
+                </div>
+            }
+        </div>
 
         <div class="mt-4">
             <h5>Poziom: <strong>@Model.Level</strong></h5>
